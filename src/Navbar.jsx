@@ -16,7 +16,7 @@ const Navbar = () => {
         </span>
       </div>
       <div class="btn--container pr-20">
-        <button class="navbar--btn bg-light-blue-grey py-2.5 pl-3.5 flex items-center rounded-2xl">
+        <button class="navbar--btn bg-light-blue-grey py-2 pl-4 flex items-center rounded-3xl">
           <span class="navbar--btn-text text-cadet-grey font-medium text-xs pr-6">
             English(UK)
           </span>

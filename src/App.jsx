@@ -1,11 +1,13 @@
 import React from "react"
 import "./App.css"
+import SignIn from "./SignIn"
 import SignUp from "./SignUp"
 
 function App() {
   return (
     <div className="App">
-      <SignUp />
+      {/* <SignUp /> */}
+      <SignIn />
     </div>
   )
 }
