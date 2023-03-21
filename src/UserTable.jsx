@@ -13,7 +13,7 @@ const UserTable = ({ page }) => {
   return (
     <div class="block w-full overflow-x-auto">
       <table class="items-center w-full border-collapse ">
-        <thead class="bg-red-300">
+        <thead class="bg-light-blue-shade">
           <tr>
             <th class="px-6 text-blue-gray align-middle py-3 text-xs whitespace-nowrap font-semibold text-left">
               #ID

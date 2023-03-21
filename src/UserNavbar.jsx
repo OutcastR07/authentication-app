@@ -20,7 +20,7 @@ const UserNavbar = () => {
           </label>
         </div>
         <div className="items flex items-center gap-10">
-          <div className="item">
+          <div className="item cursor-pointer">
             <NotificationsNoneOutlinedIcon className="text-cadet-grey" />
           </div>
           <div className="item">
@@ -28,7 +28,12 @@ const UserNavbar = () => {
               src={user}
               alt=""
               className="avatar"
-              style={{ width: "46px", height: "46px", borderRadius: "23px" }}
+              style={{
+                width: "46px",
+                height: "46px",
+                borderRadius: "23px",
+                cursor: "pointer",
+              }}
             />
           </div>
         </div>
