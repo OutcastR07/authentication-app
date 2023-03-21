@@ -1,16 +1,25 @@
 import React from "react"
 import "./App.css"
-import Home from "./Home"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import Dashboard from "./Dashboard"
+import User from "./User"
+import Sales from "./Sales"
 import SignIn from "./SignIn"
 import SignUp from "./SignUp"
 
 function App() {
   return (
-    <div className="App">
-      {/* <SignUp /> */}
-      {/* <SignIn /> */}
-      <Home />
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/" element={<User />} />
+          <Route path="/sales" element={<Sales />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+        </Routes>
+      </div>
+    </Router>
   )
 }
 

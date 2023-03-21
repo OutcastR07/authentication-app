@@ -7,6 +7,7 @@ import AlternateEmailIcon from "@mui/icons-material/AlternateEmail"
 import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt"
 import LockIcon from "@mui/icons-material/Lock"
 import { useState } from "react"
+import { Link } from "react-router-dom"
 
 const SignUp = () => {
   const [password, setPassword] = useState("")
@@ -186,9 +187,11 @@ const SignUp = () => {
             <span className="text-cadet-grey font-medium text-sm">
               Already have an account?{" "}
             </span>
-            <span className="text-dodger-blue font-medium text-sm">
-              Sign In
-            </span>
+            <Link to="/signin" className="link">
+              <span className="text-dodger-blue font-medium text-sm">
+                Sign In
+              </span>
+            </Link>
           </div>
         </form>
       </div>

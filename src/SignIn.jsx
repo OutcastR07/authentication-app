@@ -5,6 +5,7 @@ import apple from "./apple.png"
 import { InputAdornment, TextField } from "@mui/material"
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail"
 import LockIcon from "@mui/icons-material/Lock"
+import { Link } from "react-router-dom"
 
 const SignIn = () => {
   return (
@@ -98,9 +99,11 @@ const SignIn = () => {
             <span className="text-cadet-grey font-medium text-sm">
               Don't have and account yet?{" "}
             </span>
-            <span className="text-dodger-blue font-medium text-sm">
-              Sign Up
-            </span>
+            <Link to="/signup">
+              <span className="text-dodger-blue font-medium text-sm">
+                Sign Up
+              </span>
+            </Link>
           </div>
         </form>
       </div>

@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react"
 import axios from "axios"
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz"
 
-const UserTable = () => {
+const UserTable = ({ page }) => {
   const [users, setUsers] = useState([])
   useEffect(() => {
-    axios.get("https://reqres.in/api/users?page=2").then(res => {
+    axios.get(`https://reqres.in/api/users?page=${page}`).then(res => {
       console.log(res.data)
       setUsers(res.data.data)
     })
-  }, [])
+  }, [page])
   return (
     <div class="block w-full overflow-x-auto">
       <table class="items-center w-full border-collapse ">
@@ -56,7 +56,7 @@ const UserTable = () => {
                 <td class="px-6 align-middle text-sm p-4 text-left text-blue-gray font-semibold">
                   {user.email}
                 </td>
-                <td class="px-6 align-middle text-sm p-4 text-left text-blue-gray font-semibold">
+                <td class="px-6 align-middle text-sm p-4 text-left text-cadet-grey font-semibold">
                   <MoreHorizIcon />
                 </td>
               </tr>
