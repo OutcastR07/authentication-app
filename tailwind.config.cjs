@@ -13,6 +13,7 @@ module.exports = {
         "green-lizard": "#38CB89",
         "bright-grey": "#EDEFF1",
         "dodger-blue": "#377DFF",
+        "grayish-blue": "#A7AFBC",
       },
     },
   },

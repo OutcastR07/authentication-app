@@ -6,8 +6,48 @@ import { InputAdornment, TextField } from "@mui/material"
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail"
 import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt"
 import LockIcon from "@mui/icons-material/Lock"
+import { useState } from "react"
 
 const SignUp = () => {
+  const [password, setPassword] = useState("")
+  const [passwordStrength, setPasswordStrength] = useState(0)
+
+  function checkPasswordStrength(password) {
+    let strength = 0
+
+    // Checking for at least 8 characters
+    if (password.length >= 8) {
+      strength++
+    }
+
+    // Checking for at least one lowercase letter
+    if (/[a-z]/.test(password)) {
+      strength++
+    }
+
+    // Checking for at least one uppercase letter
+    if (/[A-Z]/.test(password)) {
+      strength++
+    }
+
+    // Checking for at least one number
+    if (/[0-9]/.test(password)) {
+      strength++
+    }
+
+    // Checking for at least one special character
+    if (/[$@$!%*?&]/.test(password)) {
+      strength++
+    }
+
+    return strength
+  }
+
+  function handlePasswordChange(event) {
+    setPassword(event.target.value)
+    setPasswordStrength(checkPasswordStrength(event.target.value))
+  }
+
   return (
     <div class="signUp">
       {/* NAVBAR */}
@@ -78,6 +118,8 @@ const SignUp = () => {
             <TextField
               type="password"
               placeholder="Create Password"
+              value={password}
+              onChange={handlePasswordChange}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
@@ -87,13 +129,35 @@ const SignUp = () => {
               }}
               style={{ width: "520px", height: "58px" }}
             />
-            <div className="indicator flex justify-center-between h-1 items-center mx-2 mt-5">
-              <span className="weak h-full w-full bg-green-lizard rounded-md mx-3"></span>
-              <span className="fair h-full w-full bg-green-lizard rounded-md mx-3"></span>
-              <span className="good h-full w-full bg-green-lizard rounded-md mx-3"></span>
-              <span className="strong h-full w-full bg-green-lizard rounded-md mx-3"></span>
-              <span className="veryStrong h-full w-full bg-green-lizard rounded-md mx-3"></span>
-            </div>
+            {password.length > 0 && (
+              <div className="indicator flex justify-center-between h-1 items-center mx-2 mt-5">
+                <span
+                  className={`weak h-full w-full ${
+                    passwordStrength >= 1 ? "bg-green-lizard" : "bg-gray-200"
+                  } rounded-md mx-3`}
+                ></span>
+                <span
+                  className={`fair h-full w-full ${
+                    passwordStrength >= 2 ? "bg-green-lizard" : "bg-gray-200"
+                  } rounded-md mx-3`}
+                ></span>
+                <span
+                  className={`good h-full w-full ${
+                    passwordStrength >= 3 ? "bg-green-lizard" : "bg-gray-200"
+                  } rounded-md mx-3`}
+                ></span>
+                <span
+                  className={`strong h-full w-full ${
+                    passwordStrength >= 4 ? "bg-green-lizard" : "bg-gray-200"
+                  } rounded-md mx-3`}
+                ></span>
+                <span
+                  className={`veryStrong h-full w-full ${
+                    passwordStrength === 5 ? "bg-green-lizard" : "bg-gray-200"
+                  } rounded-md mx-3`}
+                ></span>
+              </div>
+            )}
           </div>
           <div className="checkbox flex gap-3">
             <input
