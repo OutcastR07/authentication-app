@@ -1,5 +1,6 @@
 import React from "react"
 import Sidebar from "./Sidebar"
+import UserNavbar from "./UserNavbar"
 
 const Home = () => {
   return (
@@ -7,7 +8,13 @@ const Home = () => {
       <div class="p-4 col-span-1 border-r border-solid border-light-gray flex justify-center">
         <Sidebar />
       </div>
-      <div class="p-4 col-span-5 h-full">Main content</div>
+      <div class="p-4 col-span-5 h-full">
+        <div className="mb-12">
+          <UserNavbar />
+        </div>
+
+        <div className="title ml-10">Users List</div>
+      </div>
     </div>
   )
 }

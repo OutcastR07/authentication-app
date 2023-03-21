@@ -18,19 +18,19 @@ const Sidebar = () => {
           <li>
             <span className="font-medium text-cadet-grey text-xs">PAGES</span>
           </li>
-          <li className="flex items-center mt-7">
+          <li className="flex items-center mt-4 hover:bg-alice-blue w-56 h-12 p-4 rounded-xl cursor-pointer">
             <DashboardIcon className="text-cadet-grey h-4 w-4" />
             <span className="ml-4 text-sm font-medium text-grayish-blue">
               Dashboard
             </span>
           </li>
-          <li className="flex items-center mt-7">
+          <li className="flex items-center mt-4 hover:bg-alice-blue w-56 h-12 p-4 rounded-xl cursor-pointer">
             <PersonIcon className="text-cadet-grey h-4 w-4" />
             <span className="ml-4 text-sm font-medium text-grayish-blue">
               Users
             </span>
           </li>
-          <li className="flex items-center mt-7">
+          <li className="flex items-center mt-4 hover:bg-alice-blue w-56 h-12 p-4 rounded-xl cursor-pointer">
             <ReceiptLongIcon className="text-cadet-grey h-4 w-4" />
             <span className="ml-4 text-sm font-medium text-grayish-blue">
               Sales
