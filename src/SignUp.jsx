@@ -194,6 +194,7 @@ const SignUp = () => {
               name="checkbox"
               value="checkbox"
               className="cursor-pointer w-6 h-6"
+              required
             />
             <label
               for="checkbox"
