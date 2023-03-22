@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Navbar from "./Navbar"
 import google from "./google.png"
 import apple from "./apple.png"
@@ -8,12 +8,20 @@ import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt
 import LockIcon from "@mui/icons-material/Lock"
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+import { registerUser } from "./auth/authActions"
+import { useNavigate } from "react-router-dom"
 
 const SignUp = () => {
   const [email, setEmail] = useState("")
   const [name, setName] = useState("")
   const [password, setPassword] = useState("")
   const [passwordStrength, setPasswordStrength] = useState(0)
+
+  const { loading, userInfo, error, success } = useSelector(state => state.auth)
+  const dispatch = useDispatch()
+
+  const navigate = useNavigate()
 
   function checkPasswordStrength(password) {
     let strength = 0
@@ -54,7 +62,14 @@ const SignUp = () => {
   const handleSubmit = event => {
     event.preventDefault()
     console.log(email, name, password)
+    const data = { email, name, password }
+    dispatch(registerUser(data))
   }
+
+  useEffect(() => {
+    // redirect user to login page if registration was successful
+    if (success) navigate("/")
+  }, [navigate, success])
 
   return (
     <div class="signUp">
@@ -193,7 +208,18 @@ const SignUp = () => {
               className="bg-dodger-blue flex justify-center items-center rounded-xl text-white"
               style={{ width: "520px", height: "58px" }}
             >
-              Sign Up
+              {loading ? (
+                <div
+                  class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+                  role="status"
+                >
+                  <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+                    Loading...
+                  </span>
+                </div>
+              ) : (
+                "Sign Up"
+              )}
             </button>
           </div>
           <div className="account-confirmation">
