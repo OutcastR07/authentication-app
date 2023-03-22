@@ -34,11 +34,11 @@ const User = () => {
         <div className="title ml-10 text-blue-gray font-semibold text-2xl">
           Users List
         </div>
-        <div className="ml-10 mt-10">
+        <div className="ml-10 mt-8">
           <div>
             <UserTable page={currentPage + 1} />
           </div>
-          <div className="mt-14 flex items-center justify-start">
+          <div className="mt-10 flex items-center justify-start">
             <button
               className={`p-3 mr-3 double-arrow ${
                 currentPage === 0 ? "text-gray-500" : "text-button-text-color"
