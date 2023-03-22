@@ -10,6 +10,8 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 
 const SignUp = () => {
+  const [email, setEmail] = useState("")
+  const [name, setName] = useState("")
   const [password, setPassword] = useState("")
   const [passwordStrength, setPasswordStrength] = useState(0)
 
@@ -49,6 +51,11 @@ const SignUp = () => {
     setPasswordStrength(checkPasswordStrength(event.target.value))
   }
 
+  const handleSubmit = event => {
+    event.preventDefault()
+    console.log(email, name, password)
+  }
+
   return (
     <div class="signUp">
       {/* NAVBAR */}
@@ -82,11 +89,14 @@ const SignUp = () => {
         <form
           action=""
           class="flex justify-center items-center flex-col gap-y-6"
+          onSubmit={handleSubmit}
         >
           <div className="email">
             <TextField
               type="email"
               placeholder="Your Email"
+              value={email}
+              onChange={event => setEmail(event.target.value)}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
@@ -103,6 +113,8 @@ const SignUp = () => {
             <TextField
               type="text"
               placeholder="Your Name"
+              value={name}
+              onChange={event => setName(event.target.value)}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
@@ -177,6 +189,7 @@ const SignUp = () => {
           </div>
           <div className="signUp--btn">
             <button
+              type="submit"
               className="bg-dodger-blue flex justify-center items-center rounded-xl text-white"
               style={{ width: "520px", height: "58px" }}
             >

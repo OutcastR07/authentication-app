@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import Navbar from "./Navbar"
 import google from "./google.png"
 import apple from "./apple.png"
@@ -8,6 +8,14 @@ import LockIcon from "@mui/icons-material/Lock"
 import { Link } from "react-router-dom"
 
 const SignIn = () => {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const handleSubmit = event => {
+    event.preventDefault()
+    console.log(email, password)
+  }
+
   return (
     <div className="signIn">
       {/* NAVBAR */}
@@ -40,12 +48,16 @@ const SignIn = () => {
         </div>
         <form
           action=""
+          onSubmit={handleSubmit}
           class="flex justify-center items-center flex-col gap-y-6"
         >
           <div className="email">
             <TextField
               type="email"
               placeholder="Your Email"
+              value={email}
+              onChange={event => setEmail(event.target.value)}
+              required
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
@@ -62,6 +74,9 @@ const SignIn = () => {
             <TextField
               type="password"
               placeholder="Create Password"
+              value={password}
+              onChange={event => setPassword(event.target.value)}
+              required
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
@@ -89,6 +104,7 @@ const SignIn = () => {
           </div>
           <div className="signUp--btn">
             <button
+              type="submit"
               className="bg-dodger-blue flex justify-center items-center rounded-xl text-white"
               style={{ width: "520px", height: "58px" }}
             >
