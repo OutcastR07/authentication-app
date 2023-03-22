@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import axios from "axios"
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz"
+import "./UserTable.css"
 
 const UserTable = ({ page }) => {
   const [users, setUsers] = useState([])
@@ -13,51 +14,32 @@ const UserTable = ({ page }) => {
   return (
     <div class="block w-full overflow-x-auto">
       <table class="items-center w-full border-collapse ">
-        <thead class="bg-light-blue-shade">
+        <thead class="table-header">
           <tr>
-            <th class="px-6 text-blue-gray align-middle py-3 text-xs whitespace-nowrap font-semibold text-left">
-              #ID
-            </th>
-            <th class="px-6 text-blue-gray align-middle py-3 text-xs whitespace-nowrap font-semibold text-left">
-              USER
-            </th>
-            <th class="px-6 text-blue-gray align-middle py-3 text-xs whitespace-nowrap font-semibold text-left">
-              EMAIL
-            </th>
-            <th class="px-6 text-blue-gray align-middle py-3 text-xs whitespace-nowrap font-semibold text-left">
-              OPTIONS
-            </th>
+            <th className="table-cell">#ID</th>
+            <th className="table-cell">USER</th>
+            <th className="table-cell">EMAIL</th>
+            <th className="table-cell">OPTIONS</th>
           </tr>
         </thead>
         {users.length > 0 && (
           <tbody>
             {users.map(user => (
-              <tr key={user.id}>
-                <td class="px-6 align-middle text-sm p-4 text-left text-blue-gray font-semibold">
-                  {user.id}
-                </td>
-                <td class="px-6 align-middle text-sm p-4 text-left text-blue-gray font-semibold flex items-center">
-                  <div>
-                    <img
-                      src={user.avatar}
-                      alt=""
-                      className="mr-5"
-                      style={{
-                        width: "60px",
-                        height: "60px",
-                        borderRadius: "15px",
-                      }}
-                    />
-                  </div>
-                  <div>
-                    {user.first_name} {user.last_name}
+              <tr key={user.id} className="table-row">
+                <td className="table-cell">{user.id}</td>
+                <td className="table-cell">
+                  <div className="user-info">
+                    <img src={user.avatar} alt="" className="user-avatar" />
+                    <div className="user-name">
+                      {user.first_name} {user.last_name}
+                    </div>
                   </div>
                 </td>
-                <td class="px-6 align-middle text-sm p-4 text-left text-blue-gray font-semibold">
-                  {user.email}
-                </td>
-                <td class="px-6 align-middle text-sm p-4 text-left text-cadet-grey font-semibold">
-                  <MoreHorizIcon />
+                <td className="table-cell">{user.email}</td>
+                <td className="table-cell">
+                  <div className="options-ui">
+                    <MoreHorizIcon />
+                  </div>
                 </td>
               </tr>
             ))}

@@ -17,6 +17,7 @@ module.exports = {
         "grayish-blue": "#A7AFBC",
         "light-blue-shade": "#FAFBFC",
         "blue-gray": "#4E5D78",
+        "button-text-color": "#333333",
       },
     },
   },

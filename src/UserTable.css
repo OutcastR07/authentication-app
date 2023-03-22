@@ -1,0 +1,36 @@
+.table-header {
+  background-color: #f3f7f9;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  padding: 16px;
+}
+
+.table-row {
+  background-color: #ffffff;
+}
+
+.table-cell {
+  padding: 16px;
+  font-size: 14px;
+  color: #333333;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 15px;
+  margin-right: 20px;
+}
+
+.options-ui {
+  margin-left: 20px;
+}
