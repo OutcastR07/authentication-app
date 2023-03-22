@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Navbar from "./Navbar"
 import google from "./google.png"
 import apple from "./apple.png"
@@ -6,15 +6,29 @@ import { InputAdornment, TextField } from "@mui/material"
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail"
 import LockIcon from "@mui/icons-material/Lock"
 import { Link } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+import { userLogin } from "./auth/authActions"
+import { useNavigate } from "react-router-dom"
 
 const SignIn = () => {
+  const { loading, userInfo, error, success } = useSelector(state => state.auth)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
   const handleSubmit = event => {
     event.preventDefault()
     console.log(email, password)
+    const data = { email, password }
+    dispatch(userLogin(data))
   }
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate("/")
+    }
+  }, [navigate, userInfo])
 
   return (
     <div className="signIn">
@@ -108,7 +122,18 @@ const SignIn = () => {
               className="bg-dodger-blue flex justify-center items-center rounded-xl text-white"
               style={{ width: "520px", height: "58px" }}
             >
-              Sign In
+              {loading ? (
+                <div
+                  class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+                  role="status"
+                >
+                  <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+                    Loading...
+                  </span>
+                </div>
+              ) : (
+                "Sign In"
+              )}
             </button>
           </div>
           <div className="account-confirmation">

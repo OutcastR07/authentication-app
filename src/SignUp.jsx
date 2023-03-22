@@ -68,7 +68,7 @@ const SignUp = () => {
 
   useEffect(() => {
     // redirect user to login page if registration was successful
-    if (success) navigate("/")
+    if (success) navigate("/signin")
   }, [navigate, success])
 
   return (

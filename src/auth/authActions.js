@@ -6,14 +6,18 @@ import { backendURL } from "../constants"
 export const registerUser = createAsyncThunk(
   "auth/register",
   async ({ email, password }, { rejectWithValue }) => {
-    console.log("I am here")
     try {
       const config = {
         headers: {
           "Content-Type": "application/json",
         },
       }
-      await axios.post(`${backendURL}api/register`, { email, password }, config)
+      const { data } = await axios.post(
+        `${backendURL}api/register`,
+        { email, password },
+        config
+      )
+      console.log(data)
     } catch (error) {
       console.log(error)
     }
@@ -36,15 +40,12 @@ export const userLogin = createAsyncThunk(
         config
       )
       // store user's token in local storage
-      localStorage.setItem("userToken", data.userToken)
+      console.log(data)
+      sessionStorage.setItem("userToken", data.token)
       return data
     } catch (error) {
       // return custom error message from API if any
-      if (error.response && error.response.data.message) {
-        return rejectWithValue(error.response.data.message)
-      } else {
-        return rejectWithValue(error.message)
-      }
+      console.log(error)
     }
   }
 )
